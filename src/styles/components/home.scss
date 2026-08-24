@@ -1,0 +1,56 @@
+/*-----------------------top---------------------------------------*/
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+
+.top{
+    @include flex-top;
+
+    &__img{
+        display: block;
+    }
+
+    &__logo{
+        margin-top:  $offset-4;
+        margin-bottom:  $offset-4;
+    } 
+}
+
+.main{
+    @include flex-row;
+
+    .nav{
+        width: 70%;
+        box-shadow:  inset 0 -3em 3em white,0.3em 0.3em 1em  $block-color-grey-shadow;
+        padding:  $offset-7;
+
+        &__h1{
+            @include flex-row;
+            font-size: $h1-font-size;
+            align-items: center;        // ← Выравнивание по центру (вертикально)
+            text-align: center; 
+            font-weight:  $font-bold;
+        }
+
+        &__inner{
+            @include flex-column;
+            margin-top: $offset-4;
+        }
+
+        &__inner_link{
+            @include flex-row;
+            @include link;
+            margin: $offset-2;
+            color: $logo-color-blue;
+        }
+
+       
+
+    }
+}
+
+ .footer{
+         margin-top: $offset-7;
+         text-align: center; 
+    }
+

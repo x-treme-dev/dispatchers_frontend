@@ -1,0 +1,29 @@
+@use '../base/variables' as *;
+@mixin flex-top{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@mixin flex-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@mixin flex-column{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+}
+
+@mixin link{
+    text-decoration: none;
+    font-size: $link-font-size;
+
+     &:hover {
+        color: $login-color-blue;           // Темнее при наведении
+        text-decoration: underline; // Подчеркивание при наведении
+        transition: all 0.3s ease;  // Плавный переход
+    }
+}
