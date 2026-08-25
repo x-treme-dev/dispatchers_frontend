@@ -41,12 +41,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  color: blue;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 .main .nav__inner_link:hover {
-  color: darkblue;
+  color: #136295;
   text-decoration: underline;
   transition: all 0.3s ease;
 }

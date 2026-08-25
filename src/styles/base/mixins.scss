@@ -1,4 +1,5 @@
 @use '../base/variables' as *;
+
 @mixin flex-top{
     display: flex;
     flex-wrap: wrap;
@@ -26,4 +27,37 @@
         text-decoration: underline; // Подчеркивание при наведении
         transition: all 0.3s ease;  // Плавный переход
     }
+}
+
+ @mixin input{
+     width: $input-width;
+     height: $input-height;
+     box-sizing: border-box;
+     margin-bottom: $offset-4;
+     font-size: $input-font-size;
+
+       // Убираем все рамки
+    border: none;
+    border-bottom: 2px solid  $bg-color-blue;  // ← Только нижняя рамка
+    background: transparent;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  @mixin button{
+    width: $input-width;
+    min-height: $input-height;
+    font-size:  $button-font-size;
+    background-color: $button-color-blue;
+    border: none;
+    color: white;
+}
+
+@mixin error{
+    //color: $error-color;
+    font-size: $error-font-size;
+    background-color: $error-color;
+    color: white;
+    padding: 10px;
+    margin: $offset-2
 }

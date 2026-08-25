@@ -47,7 +47,7 @@ export function Home() {
 
       {/* Footer */}
       <footer className='footer'>
-        <p>© {new Date().getFullYear()} Все права защищены.</p>
+        <p>© {new Date().getFullYear()} Development by Yurchenko Igor.</p>
       </footer>
     </>
   );

@@ -68,13 +68,94 @@ body {
 .top {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
 }
 .top__img {
   display: block;
 }
 .top__logo {
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.main .nav {
+  width: 70%;
+  box-shadow: inset 0 -3em 3em white, 0.3em 0.3em 1em #A1A1A1;
+  padding: 7%;
+}
+.main .nav__h1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 2em;
+  align-items: center;
+  text-align: center;
+  font-weight: 600;
+}
+.main .nav__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 4%;
+}
+.main .nav__inner_link {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+.main .nav__inner_link:hover {
+  color: #136295;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+.main .nav__inner_link {
+  margin: 2%;
+  color: #3a8ac0;
+}
+
+.footer {
   margin-top: 7%;
-  margin-bottom: 7%;
+  text-align: center;
+}
+
+/*-----------------------top---------------------------------------*/
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.top__img {
+  display: block;
+}
+.top__logo {
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.main .combo {
+  width: 70%;
+  box-shadow: inset 0 -3em 3em white, 0.3em 0.3em 1em #A1A1A1;
+  border: 2px solid black;
+  padding: 7%;
+}
+.main .combo__h1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 2em;
+  align-items: center;
+  text-align: center;
+  font-weight: 600;
 }/*# sourceMappingURL=main.css.map */
