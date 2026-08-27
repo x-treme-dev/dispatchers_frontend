@@ -16,6 +16,7 @@
      display: flex;
      flex-direction: column;
      justify-content: center;
+     align-items: center;
 }
 
 @mixin link{
@@ -33,14 +34,13 @@
      width: $input-width;
      height: $input-height;
      box-sizing: border-box;
-     margin-bottom: $offset-4;
-     font-size: $input-font-size;
-
-       // Убираем все рамки
+     margin-bottom: $offset-1;
+     // Убираем все рамки
     border: none;
     border-bottom: 2px solid  $bg-color-blue;  // ← Только нижняя рамка
     background: transparent;
     outline: none;
+    padding: $offset-3;
     transition: border-color 0.3s ease;
   }
 
@@ -49,9 +49,10 @@
     min-height: $input-height;
     font-size:  $button-font-size;
     background-color: $button-color-blue;
+    padding: 4px 0;
     border: none;
     color: white;
-}
+    }
 
 @mixin error{
     //color: $error-color;
@@ -59,5 +60,6 @@
     background-color: $error-color;
     color: white;
     padding: 10px;
-    margin: $offset-2
+    text-align: center;
+    margin-top: $offset-2
 }

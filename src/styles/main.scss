@@ -1,5 +1,7 @@
 @use 'base/reset';
 @use 'base/structure';
 
+// стили css наследуются от верхнего к нижнему компонунту
 @use 'components/home';
 @use 'components/login';
+@use 'components/register';

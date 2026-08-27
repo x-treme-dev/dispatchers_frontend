@@ -38,11 +38,11 @@ export function Login() {
         <h1 className='combo__h1'>Вход в систему</h1>
 
         <p className='combo__p'>
-          или <Link className='combo__link' to="/register">регистрация</Link>
+          <Link className='combo__link' to="/register">Регистрация</Link>
         </p>
       
           <form className='combo__form' onSubmit={handleSubmit}>
-            <div>
+            <div className='combo__form_block'>
               <input className='combo__form_input'
                 type="email"
                 value={email}
@@ -51,7 +51,7 @@ export function Login() {
                 placeholder="Email адрес"
               />
             </div>
-            <div>
+            <div className='combo__form_block'>
               <input className='combo__form_input'
                 type="password"
                 value={password}
@@ -67,7 +67,7 @@ export function Login() {
           
             </form>
         </section>
-         {error && <div className='combo__err'>{error}</div>}
+         {error && <div className='err'>{error}</div>}
       </main>
     </>
   );

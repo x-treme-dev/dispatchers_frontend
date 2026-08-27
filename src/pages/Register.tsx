@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import corpIcon from '../assets/voda_logo.png';
 
 export function Register() {
   const [name, setName] = useState('');
@@ -28,19 +29,29 @@ export function Register() {
   };
 
   return (
+    <>
+    <div className='top'>
+      
+        <Link to="/" className="top__logo">
+        <img className="top__logo_img"
+          src={corpIcon} 
+          alt="Ноme" />
+        </Link>
+     
+      </div>
   
-    <div>
-      <div>
+       <main className='main'>
+      <section className="combo">
         <div>
-          <h2>Регистрация</h2>
-          <p>
-            Или <Link to="/login">войдите в систему</Link>
+          <h1 className='combo__h1'>Регистрация</h1>
+          <p className='combo__p'>
+            <Link className='combo__link' to="/login">Вход в систему</Link>
           </p>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <div>
-              <input
+        <form className='combo__form' onSubmit={handleSubmit}>
+         
+            <div className='combo__form_block'>
+              <input className='combo__form_input'
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -48,8 +59,8 @@ export function Register() {
                 placeholder="Имя"
               />
             </div>
-            <div>
-              <input
+            <div className='combo__form_block'>
+              <input className='combo__form_input'
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -57,8 +68,8 @@ export function Register() {
                 placeholder="Email адрес"
               />
             </div>
-            <div>
-              <input
+            <div className='combo__form_block'>
+              <input className='combo__form_input'
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -66,8 +77,8 @@ export function Register() {
                 placeholder="Пароль"
               />
             </div>
-            <div>
-              <input
+            <div className='combo__form_block'>
+              <input className='combo__form_input'
                 type="password"
                 value={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
@@ -75,25 +86,20 @@ export function Register() {
                 placeholder="Подтверждение пароля"
               />
             </div>
-          </div>
-
-          {error && (
-            <div>
-              {error}
-            </div>
-          )}
-
-          <div>
-            <button
+          
+           <button className='combo__form_button'
               type="submit"
               disabled={loading}
             >
               {loading ? 'Регистрация...' : 'Зарегистрироваться'}
             </button>
-          </div>
-        </form>
-      </div>
-    </div>
-   
+          </form>
+        </section>
+      
+        {error && ( <div className='err'> {error} </div> )}
+
+    </main>
+    
+   </>
   );
 }

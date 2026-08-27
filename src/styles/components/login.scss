@@ -2,22 +2,10 @@
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
 
-
-.top{
-    @include flex-top;
-
-    &__img{
-        display: block;
-    }
-
-    &__logo{
-        margin-top:  $offset-4;
-        margin-bottom:  $offset-4;
-    } 
-}
-
+// .top наследуется от Home.tsx
 .main{
-    @include flex-row;
+    @include flex-column;
+  
 
     .combo{
         width: 70%;
@@ -52,16 +40,78 @@
 
         &__form_input{
              @include input;
+            font-size: $input-font-size;
+        } 
+
+        &__form_block{
+            width: 100%;
         }
 
         &__form_button{
             @include button;
         }
 
-        &__err{
-            @include flex-row;
-            @include error;
-            
-        }
+       
     }
 }
+
+
+    .err{
+            @include flex-row;
+            @include error;
+            width: 70%;
+            
+        }
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+          
+        .main{
+                .combo{
+
+                     &__h1{
+                           font-size: $h1-font-size + 0.2;
+                     }
+
+                      &__link{
+                           font-size: $link-font-size + 0.2;  
+                     }
+                }
+
+
+            }
+
+    }
+
+
+
+    @media (min-width:320px) and (max-width:767px){
+
+        .main{
+                .combo{
+                     &__h1{
+                           font-size: $h1-font-size - 1;
+                     }
+
+                      &__link{
+                           font-size: $link-font-size - 0.5;  
+                     }
+
+                       &__form_input{
+                            font-size: $input-font-size - 0.4;
+                      }
+
+                      &__form_button{
+                            font-size: $button-font-size - 0.6;
+                      }
+                }
+
+
+            }
+
+
+            .err{
+                font-size: $error-font-size - 0.6;
+            }
+
+    }
