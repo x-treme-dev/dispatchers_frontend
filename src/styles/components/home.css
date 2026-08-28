@@ -4,8 +4,9 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-.top__img {
+.top__logo_img {
   display: block;
+  width: 50%;
 }
 .top__logo {
   display: flex;
@@ -31,7 +32,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  font-size: 2.2em;
+  font-size: 2em;
   align-items: center;
   text-align: center;
   font-weight: 600;
@@ -48,7 +49,7 @@
   flex-wrap: wrap;
   justify-content: center;
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 .main .nav__inner_link:hover {
   color: #136295;
@@ -67,23 +68,23 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .main .nav__h1 {
-    font-size: 2.4em;
+    font-size: 2.2em;
   }
   .main .nav__inner_link {
-    font-size: 1.7em;
+    font-size: 1.4em;
   }
 }
 @media (min-width: 320px) and (max-width: 767px) {
   .top__logo_img {
-    width: 60%;
+    width: 10%;
   }
   .main .nav__h1 {
-    font-size: 0.9em;
+    font-size: 0.7em;
   }
   .main .nav__inner_link {
-    font-size: 0.8em;
+    font-size: 0.5em;
   }
   .footer__p {
-    font-size: 0.9em;
+    font-size: 0.6em;
   }
 }/*# sourceMappingURL=home.css.map */

@@ -49,10 +49,21 @@
     min-height: $input-height;
     font-size:  $button-font-size;
     background-color: $button-color-blue;
+    margin-top: $offset-4;
     padding: 4px 0;
     border: none;
     color: white;
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba($button-color-blue, 0.85);
+        }
+        
+        &:active {
+            transform: scale(0.98); // Эффект нажатия
+        }
     }
+    
 
 @mixin error{
     //color: $error-color;

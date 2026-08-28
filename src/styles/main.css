@@ -70,8 +70,9 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
-.top__img {
+.top__logo_img {
   display: block;
+  width: 50%;
 }
 .top__logo {
   display: flex;
@@ -97,7 +98,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  font-size: 2.2em;
+  font-size: 2em;
   align-items: center;
   text-align: center;
   font-weight: 600;
@@ -114,7 +115,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 .main .nav__inner_link:hover {
   color: #136295;
@@ -132,28 +133,25 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .main .nav {
-    width: 100%;
-  }
   .main .nav__h1 {
-    font-size: 1.7em;
+    font-size: 2.2em;
   }
   .main .nav__inner_link {
-    font-size: 1em;
+    font-size: 1.4em;
   }
 }
 @media (min-width: 320px) and (max-width: 767px) {
   .top__logo_img {
-    width: 60%;
+    width: 10%;
   }
   .main .nav__h1 {
-    font-size: 2.7em;
+    font-size: 0.7em;
   }
   .main .nav__inner_link {
-    font-size: 1.5em;
+    font-size: 0.5em;
   }
-  .footer {
-    font-size: 0.7em;
+  .footer__p {
+    font-size: 0.6em;
   }
 }
 /*-----------------------top---------------------------------------*/
@@ -172,7 +170,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  font-size: 2.2em;
+  font-size: 2em;
   align-items: center;
   text-align: center;
   font-weight: 600;
@@ -188,7 +186,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 .main .combo__link:hover {
   color: #136295;
@@ -207,26 +205,40 @@ body {
   align-items: center;
 }
 .main .combo__form_input {
-  width: 400px;
-  height: 40px;
+  width: 100%;
+  height: 30px;
   box-sizing: border-box;
-  margin-bottom: 4%;
-  font-size: 0.8em;
+  margin-bottom: 1%;
   border: none;
   border-bottom: 2px solid #8ECBF3;
   background: transparent;
   outline: none;
+  padding: 3%;
   transition: border-color 0.3s ease;
+  font-size: 1.2em;
+}
+.main .combo__form_block {
+  width: 100%;
 }
 .main .combo__form_button {
-  width: 400px;
-  min-height: 40px;
-  font-size: 0.9em;
+  width: 100%;
+  min-height: 30px;
+  font-size: 1.2em;
   background-color: #39A1E6;
+  margin-top: 4%;
+  padding: 4px 0;
   border: none;
   color: white;
 }
-.main .combo__err {
+.main .combo__form_button:hover {
+  cursor: pointer;
+  background-color: rgba(57, 161, 230, 0.85);
+}
+.main .combo__form_button:active {
+  transform: scale(0.98);
+}
+
+.err {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -234,31 +246,33 @@ body {
   background-color: #E53852;
   color: white;
   padding: 10px;
+  text-align: center;
   margin-top: 2%;
+  width: 70%;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .main .combo__h1 {
-    font-size: 1.7em;
+    font-size: 2.2em;
   }
-  .main .combo__inner_link {
-    font-size: 1em;
+  .main .combo__link {
+    font-size: 1.4em;
   }
 }
 @media (min-width: 320px) and (max-width: 767px) {
-  .top__logo_img {
-    width: 60%;
-  }
-  .main .combo {
-    width: 100%;
-  }
   .main .combo__h1 {
-    font-size: 0.5em;
+    font-size: 1em;
   }
-  .main .combo__inner_link {
-    font-size: 0.5em;
-  }
-  .footer {
+  .main .combo__link {
     font-size: 0.7em;
+  }
+  .main .combo__form_input {
+    font-size: 0.8em;
+  }
+  .main .combo__form_button {
+    font-size: 0.6em;
+  }
+  .err {
+    font-size: 0.6em;
   }
 }/*# sourceMappingURL=main.css.map */
