@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { AuthProvider } from './contexts/AuthContext';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import { Tickets } from './pages/Tickets';
 import { Dashboard } from './pages/Dashboard';
 import { Home } from './pages/Home';
 import { ProtectedRoute } from './pages/ProtectedRoute';
@@ -20,6 +22,7 @@ function App() {
    
     <div className='container'>
     <QueryClientProvider client={queryClient}>
+       <AuthProvider>
       <Router>
         <Routes>
           {/* Публичные маршруты */}
@@ -35,11 +38,21 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+            <Route
+              path="/tickets"
+              element={
+                <ProtectedRoute>
+                  <Tickets />
+                </ProtectedRoute>
+              }
+            />
           
           {/* Перенаправление для неизвестных маршрутов */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
+      </AuthProvider>
     </QueryClientProvider>
     </div>
    

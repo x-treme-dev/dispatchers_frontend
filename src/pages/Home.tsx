@@ -28,8 +28,9 @@ export function Home() {
           {isAuthenticated() ? (
             <>
               <div className='nav__inner'>
-              <span>Добро пожаловать, {user?.name}!</span>
-              <Link className='nav__inner_link' to="/dashboard">Dashboard</Link>
+              <h2 className='nav__h2'>Добро пожаловать, {user?.name}!</h2>
+              <Link className='nav__inner_link' to="/tickets">Заявки</Link>
+              <Link className='nav__inner_link' to="/dashboard">Личная информация</Link>
               </div>
             </>
           ) : (
