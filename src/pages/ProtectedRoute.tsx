@@ -10,13 +10,13 @@ interface ProtectedRouteProps {
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
   const token = localStorage.getItem('auth_token');
-  /*
+  
   console.log('Проверка аутентификации пользователя:', {
     isAuthenticated,
     loading,
     token: token ? 'Получен' : 'Нет',
     tokenValue: token ? token.substring(0, 5) + '...' : null
-  }); */
+  }); 
 
   // Показываем загрузку, пока проверяем авторизацию
   if (loading) {
