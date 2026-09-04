@@ -1,77 +1,40 @@
-import React, { useState } from 'react';
-import { useAuth} from '../contexts/AuthContext';
+import React from 'react';
+import { useAuth } from '../contexts/AuthContext';
 import { useTickets } from '../hooks/useTickets';
+import { useNavigate } from 'react-router-dom';
+import type { Ticket } from '../api/tickets';  
 
 export const Tickets: React.FC = () => {
   const { user, logout } = useAuth();
-  const [statusFilter, setStatusFilter] = useState('all');
-  const { tickets, loading, error, refetch } = useTickets({
-    status: statusFilter === 'all' ? undefined : statusFilter
-  });
+  const navigate = useNavigate();
+  const { tickets, loading, error, refetch } = useTickets();
+   
+  console.log(tickets);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error} <button onClick={refetch}>Retry</button></div>;
+  if (!tickets.length) return <div>No tickets found</div>;
 
   return (
     <div>
       <div>
-        <div>
-          <h1>Tickets</h1>
-          {user && <p>Welcome, {user.name}!</p>}
-        </div>
-        <div>
-          <button onClick={refetch}>Refresh</button>
-          <button onClick={logout}>Logout</button>
-        </div>
+        <h1>Tickets</h1>
+        {user && <p>Welcome, {user.name}!</p>}
+        <button onClick={refetch}>Refresh</button>
+        <button onClick={async () => { await logout(); navigate('/login'); }}>Logout</button>
       </div>
-
-      <div>
-        <span>Filter:</span>
-        {['all', 'open', 'in_progress', 'closed'].map((status) => (
-          <button
-            key={status}
-            onClick={() => setStatusFilter(status)}
-          >
-            {status === 'all' ? 'All' : status.replace('_', ' ')}
-          </button>
-        ))}
-      </div>
-
-      {loading && <p>Loading...</p>}
       
-      {error && (
-        <div>
-          <p>Error: {error}</p>
+      {tickets.map((ticket: Ticket) => (  
+        <div key={ticket.id}>
+          <h3>#{ticket.id} {ticket.title || ticket.service || 'Без названия'}</h3>
+          <p>{ticket.description || 'Нет описания'}</p>
+          {ticket.status && <span>{ticket.status.replace('_', ' ')}</span>}
+          {ticket.priority && <span>{ticket.priority}</span>}
+          <p>Created: {ticket.created_at ? new Date(ticket.created_at).toLocaleDateString() : ticket.date || 'N/A'}</p>
+          {ticket.phone && <p>Phone: {ticket.phone}</p>}
+          <hr />
         </div>
-      )}
-
-      {!loading && !error && tickets.length === 0 && (
-        <p>No tickets found</p>
-      )}
-
-      {!loading && !error && tickets.length > 0 && (
-        <div>
-          {tickets.map((ticket) => (
-            <div key={ticket.id}>
-              <div>
-                <div>
-                  <h3>{ticket.title}</h3>
-                  <p>{ticket.description}</p>
-                </div>
-                <div>
-                  <div>
-                    <span>{ticket.status.replace('_', ' ')}</span>
-                  </div>
-                  <div>
-                    <span>{ticket.priority}</span>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <span>Created: {new Date(ticket.created_at).toLocaleDateString()}</span>
-              </div>
-              <hr />
-            </div>
-          ))}
-        </div>
-      )}
+      ))}
     </div>
   );
 };

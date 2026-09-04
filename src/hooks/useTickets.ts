@@ -1,36 +1,44 @@
+// src/hooks/useTickets.ts
 import { useState, useEffect, useCallback } from 'react';
-import { api } from '../services/api';
-import type { Ticket } from '../../types';
+import { ticketsAPI } from '../api/tickets';
 
 export const useTickets = (options: { status?: string; page?: number } = {}) => {
-  const { status, page = 1 } = options;
-  const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [data, setData] = useState({ tickets: [], total: 0, lastPage: 1 });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
+  const [page, setPage] = useState(options.page || 1);
 
-  const fetchTickets = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    
+  const fetch = useCallback(async () => {
     try {
-      const response = await api.getTickets({ status, page });
-      setTickets(response.data);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load tickets');
+      setLoading(true);
+      const params: any = { page };
+      if (options.status && options.status !== 'all') params.status = options.status;
+      
+      const res = await ticketsAPI.getAll(params);
+      setData({
+        tickets: res?.data || [],
+        total: res?.meta?.total || 0,
+        lastPage: res?.meta?.last_page || 1,
+      });
+    } catch (err: any) {
+      setError(err.message);
     } finally {
       setLoading(false);
     }
-  }, [status, page]);
+  }, [options.status, page]);
 
-  useEffect(() => {
-    fetchTickets();
-  }, [fetchTickets]);
+  useEffect(() => { fetch(); }, [fetch]);
 
   return {
-    tickets,
+    tickets: data.tickets,
     loading,
     error,
-    fetchTickets,
-    refetch: fetchTickets,
+    refetch: fetch,
+    page,
+    setPage,
+    total: data.total,
+    lastPage: data.lastPage,
+    hasNext: page < data.lastPage,
+    hasPrev: page > 1,
   };
 };

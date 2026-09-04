@@ -13,35 +13,46 @@ export interface RegisterData {
 }
 
 export interface AuthResponse {
-  token: string;
+  success: boolean;
+  message: string;
+  access_token: string;
+  token_type: string;
   user: {
     id: number;
     name: string;
     email: string;
-    email_verified_at?: string | null;
-    created_at: string;
-    updated_at: string;
+    role?: string;
   };
 }
 
+const saveAuthData = (data: AuthResponse) => {
+  if (data.success && data.access_token) {
+    localStorage.setItem('auth_token', data.access_token);
+    localStorage.setItem('token_type', data.token_type);
+    localStorage.setItem('user', JSON.stringify(data.user));
+  }
+};
+
 export const authAPI = {
-  // Вход
-  login: (credentials: LoginCredentials) => 
-    apiClient.post<AuthResponse>('/login', credentials),
-  
-  // Регистрация
-  register: (data: RegisterData) => 
-    apiClient.post<AuthResponse>('/register', data),
-  
-  // Выход
-  logout: () => 
-    apiClient.post('/logout'),
-  
-  // Получение текущего пользователя
-  getUser: () => 
-    apiClient.get<{ user: AuthResponse['user'] }>('/user'),
-  
-  // Обновление профиля
+  login: async (credentials: LoginCredentials) => {
+    const response = await apiClient.post<AuthResponse>('/login', credentials);
+    saveAuthData(response.data);
+    return response;
+  },
+
+  register: async (data: RegisterData) => {
+    const response = await apiClient.post<AuthResponse>('/register', data);
+    saveAuthData(response.data);
+    return response;
+  },
+
+  logout: async () => {
+    await apiClient.post('/logout');
+    ['auth_token', 'token_type', 'user'].forEach(key => localStorage.removeItem(key));
+  },
+
+  getUser: () => apiClient.get<{ user: AuthResponse['user'] }>('/user'),
+
   updateProfile: (data: Partial<AuthResponse['user']>) => 
     apiClient.put<AuthResponse['user']>('/user', data),
 };
