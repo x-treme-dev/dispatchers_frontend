@@ -6,17 +6,17 @@
 .top{
     @include flex-top;
 
-    &__logo_img{
-        display: block;
-        width: $logo-img-size;
-    }
-     
-  
-    &__logo{
+      &__logo{
         @include flex-row; 
         margin-top:  $offset-4;
         margin-bottom:  $offset-4;
     } 
+
+    &__logo_img{
+        display: block;
+        width: $logo-img-size;
+    }
+  
 }
 
 .main{
@@ -89,19 +89,14 @@
 
     @media (min-width:320px) and (max-width:767px){
 
-         .top{
-            
-              &__logo_img{
-                width: $logo-img-size - 40%;
-            }
-
-        }
+        
 
         .main{
                 .nav{
-                    
+                     width: 100%;
+
                      &__h1{
-                           font-size: $h1-font-size - 1.3;
+                           font-size: $h1-font-size - 1;
                      }
 
                        &__h2{
@@ -109,7 +104,7 @@
                      }
 
                       &__inner_link{
-                           font-size: $link-font-size - 0.7;  
+                           font-size: $link-font-size - 0.3;  
                      }
                 }
 
@@ -117,7 +112,6 @@
             }
 
             .footer{
-                  
                 &__p{
                        font-size: $footer-font-size - 0.4;
                 }

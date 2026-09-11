@@ -8,8 +8,21 @@
 
 @mixin flex-row{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+@mixin flex-row-start{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+@mixin flex-column-start{
+     display: flex;
+     flex-direction: column;
+     justify-content: start;
 }
 
 @mixin flex-column{
@@ -24,9 +37,9 @@
     font-size: $link-font-size;
 
      &:hover {
-        color: $login-color-blue;           // Темнее при наведении
-        text-decoration: underline; // Подчеркивание при наведении
-        transition: all 0.3s ease;  // Плавный переход
+        color: $login-color-blue;           
+        text-decoration: underline; 
+        transition: all 0.3s ease;  
     }
 }
 

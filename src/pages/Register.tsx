@@ -37,6 +37,7 @@ export function Register() {
 
   return (
     <>
+     <div className='container'>
       <div className='top'>
         <Link to="/" className="top__logo">
           <img className="top__logo_img" src={corpIcon} alt="Home" />
@@ -98,6 +99,7 @@ export function Register() {
         </section>
         {error && <div className='err'>{error}</div>}
       </main>
+      </div>
     </>
   );
 }

@@ -1,0 +1,30 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.top-control-panel{
+    @include flex-row-start;
+    height: 10vh;
+    min-height: 100px;
+    background-color: $bg-color-blue;
+
+        &__wrapper{
+            @include flex-row-start;
+            align-items: center;
+            margin-left: $offset-10;
+        }
+
+                &__logo{
+                    &_img{
+                    display: block;
+                    width: 90%;
+                    max-width: 130px;
+                }
+
+                }
+
+                &__info{
+                    &_p{
+                        font-size: $info-font-size;
+                    }
+                }
+}

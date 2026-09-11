@@ -1,61 +1,43 @@
-//import { useAuth } from '../hooks/useAuth';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import corpIcon from '../assets/voda_logo.png';
 
 export function Dashboard() {
   const { getUser, logout } = useAuth();
   const user = getUser();
+  
+  console.log(user);
 
   return (
     <>
-      {/* Навигация */}
-      <nav>
-        <span>Dispatcher | Dashboard</span>
-        <span>
-          Привет, <span>{user?.name || 'User'}!</span>
-        </span>
-        <button onClick={logout}>Выйти</button>
-      </nav>
 
-      {/* Основной контент */}
-      <section>
-        <h1>Панель управления</h1>
-        <p>Добро пожаловать в ваш личный кабинет</p>
-
-        {/* Статистика */}
-        <div>
-          <div>
-            <p>Всего задач</p>
-            <p>0</p>
+      <div className='top-control-panel'>
+         <div className='top-control-panel__wrapper'>
+            <Link className='top-control-row-panel__logo' to="/">
+              <img  className='top-control-panel__logo_img' src={corpIcon} alt="Home" />
+            </Link> 
+            <div className='top-control-panel__info'>
+              <p className='top-control-panel__info_p'>{user?.role || 'Не указан'}</p>
+              <p className='top-control-panel__info_p'>{user?.name || 'User'}</p>
+              <p className='top-control-panel__info_p'>{user?.email || 'Не указан'}</p>
+              </div>
           </div>
-          <div>
-            <p>Выполнено</p>
-            <p>0</p>
-          </div>
-          <div>
-            <p>В работе</p>
-            <p>0</p>
-          </div>
-        </div>
-
-        {/* Информационная секция */}
-        <div>
-          <h2>Добро пожаловать в систему!</h2>
-          <p>
-            Здесь будет отображаться ваш дашборд с задачами и статистикой.
-            Вы можете начать добавлять задачи или настраивать профиль.
-          </p>
-          <button>Создать задачу</button>
-          <button>Настройки</button>
-        </div>
-
-        {/* Информация о пользователе */}
-        <div>
-          <h3>Информация о профиле</h3>
-          <p><span>Имя:</span> {user?.name || 'Не указано'}</p>
-          <p><span>Email:</span> {user?.email || 'Не указан'}</p>
-          <p><span>ID пользователя:</span> {user?.id || '—'}</p>
-        </div>
-      </section>
+      </div>
+      
+      <div className='container'>
+           <nav>
+             <div>
+             
+             
+             </div>
+             <p>
+              <Link to="/register">Создать заявку</Link>
+              <Link to="/tickets">Все заявки</Link>
+              <Link to="/logout">Выйти</Link>
+              </p>
+            </nav>
+   
+      </div>
     </>
   );
 }

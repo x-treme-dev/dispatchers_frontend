@@ -27,6 +27,7 @@ export function Login() {
 
   return (
     <>
+      <div className='container'>
       <div className='top'>
         <Link to="/" className="top__logo">
           <img className="top__logo_img" src={corpIcon} alt="Home" />
@@ -66,6 +67,7 @@ export function Login() {
         </section>
         {error && <div className='err'>{error}</div>}
       </main>
+      </div>
     </>
   );
 }

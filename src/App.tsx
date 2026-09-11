@@ -20,7 +20,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
    
-    <div className='container'>
+  
     <QueryClientProvider client={queryClient}>
        <AuthProvider>
       <Router>
@@ -54,7 +54,7 @@ function App() {
       </Router>
       </AuthProvider>
     </QueryClientProvider>
-    </div>
+  
    
   );
 }

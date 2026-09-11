@@ -8,6 +8,7 @@ export function Home() {
 
   return (
     <>
+      <div className='container'>
       <div className='top'>
         <Link to="/" className="top__logo">
           <img className="top__logo_img" src={corpIcon} alt="Home" />
@@ -22,8 +23,7 @@ export function Home() {
             <>
               <div className='nav__inner'>
                 <h2 className='nav__h2'>Добро пожаловать, {user?.name}!</h2>
-                <Link className='nav__inner_link' to="/tickets">Заявки</Link>
-                <Link className='nav__inner_link' to="/dashboard">Личная информация</Link>
+                <Link className='nav__inner_link' to="/dashboard">Панель управления</Link>
               </div>
             </>
           ) : (
@@ -40,6 +40,7 @@ export function Home() {
       <footer className='footer'>
         <p className='footer__p'>© {new Date().getFullYear()} Development by Yurchenko Igor.</p>
       </footer>
+      </div>
     </>
   );
 }
